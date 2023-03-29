@@ -533,6 +533,8 @@ def processRedirects(cmd, stdin_source, cmd_shenv, opened_files):
             redirects[2] = [filename, 'a', None]
         elif op == ('>&',2) and filename in '012':
             redirects[2] = redirects[int(filename)]
+        elif op == ('>&',1) and filename in '012':
+            redirects[1] = redirects[int(filename)]
         elif op == ('>&',) or op == ('&>',):
             redirects[1] = redirects[2] = [filename, 'w', None]
         elif op == ('>',):

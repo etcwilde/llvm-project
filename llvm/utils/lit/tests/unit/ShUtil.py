@@ -62,6 +62,9 @@ class TestShParse(unittest.TestCase):
         self.assertEqual(self.parse('a 2>&1'),
                          Pipeline([Command(['a'], [(('>&',2), '1')])], False))
 
+        self.assertEqual(self.parse('a 1>&2'),
+                         Pipeline([Command(['a'], [(('>&',1), '2')])], False))
+
     def test_pipeline(self):
         self.assertEqual(self.parse('a | b'),
                          Pipeline([Command(['a'], []),
