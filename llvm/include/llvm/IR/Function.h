@@ -693,6 +693,11 @@ public:
     return BasicBlocks.insert(Position, BB);
   }
 
+  /// append \p BB to the end of the function
+  void push_back(BasicBlock *BB) {
+    return BasicBlocks.push_back(BB);
+  }
+
   /// Transfer all blocks from \p FromF to this function at \p ToIt.
   void splice(Function::iterator ToIt, Function *FromF) {
     splice(ToIt, FromF, FromF->begin(), FromF->end());
