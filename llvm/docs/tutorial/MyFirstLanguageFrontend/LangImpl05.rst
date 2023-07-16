@@ -377,7 +377,7 @@ value for code that will set up the Phi node.
 .. code-block:: c++
 
       // Emit else block.
-      TheFunction->insert(TheFunction->end(), ElseBB);
+      TheFunction->push_back(ElseBB);
       Builder->SetInsertPoint(ElseBB);
 
       Value *ElseV = Else->codegen();
@@ -398,7 +398,7 @@ code:
 .. code-block:: c++
 
       // Emit merge block.
-      TheFunction->insert(TheFunction->end(), MergeBB);
+      TheFunction->push_back(MergeBB);
       Builder->SetInsertPoint(MergeBB);
       PHINode *PN =
         Builder->CreatePHI(Type::getDoubleTy(*TheContext), 2, "iftmp");
